@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1020">
+<title>FlowPilot AI — Turn more leads into customers</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a30;--panel2:#17213b;--text:#f4f7ff;--muted:#a8b3ce;--line:#293653;--accent:#8b7cff;--cyan:#58d6d0;--green:#72dfae;--red:#ff9d9d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#25224f 0,transparent 36%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1120px;margin:auto;padding:20px}.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{font-weight:850;font-size:21px;letter-spacing:-.6px}.brand span{color:var(--cyan)}.tag{border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--muted);font-size:12px}
+.hero{padding:38px 0 24px;max-width:760px}.eyebrow{color:var(--cyan);font-weight:800;text-transform:uppercase;letter-spacing:1.7px;font-size:11px}.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.05;letter-spacing:-1.7px;margin:12px 0}.hero h1 em{font-style:normal;color:var(--cyan)}.hero p{color:var(--muted);font-size:17px;max-width:650px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.stat{background:#121a30;border:1px solid var(--line);border-radius:14px;padding:14px}.stat strong{display:block;font-size:24px}.stat span{font-size:12px;color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 14px}.tab{background:#141d33;border:1px solid var(--line);color:var(--muted);padding:10px 14px;border-radius:10px}.tab.active{background:#302d62;border-color:#7165ed;color:#fff}
+.panel{background:linear-gradient(145deg,#151f38,#10172a);border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:18px}.panel h2{font-size:19px;margin:0 0 5px}.sub{color:var(--muted);font-size:13px;margin:0 0 16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.field{margin-bottom:12px}label{display:block;font-size:12px;color:#cbd4e8;margin:0 0 6px}input,select,textarea{width:100%;border:1px solid #344361;background:#0c1325;color:var(--text);padding:11px;border-radius:10px;font:inherit}textarea{min-height:85px;resize:vertical}button{border:0;border-radius:10px;background:linear-gradient(90deg,var(--accent),#6c8cff);color:white;font-weight:750;padding:11px 14px;font:inherit;cursor:pointer}button:disabled{opacity:.55;cursor:wait}.secondary{background:#202b47;border:1px solid #354363}.danger{background:#4b2637;border:1px solid #784253}.small{padding:7px 10px;font-size:12px}.full{width:100%}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.muted{color:var(--muted)}.hidden{display:none!important}.notice{padding:12px;border:1px solid #655b9e;background:#211f42;border-radius:12px;color:#dedbff;font-size:13px;margin:12px 0}.leadlist{display:grid;gap:10px}.lead{border:1px solid var(--line);background:#0f172a;border-radius:13px;padding:14px}.leadtop{display:flex;justify-content:space-between;gap:12px;align-items:start}.leadname{font-weight:800;font-size:16px}.pill{display:inline-block;font-size:11px;padding:4px 8px;border-radius:999px;background:#24314c;color:#cbd7f2}.pill.new{background:#163d3a;color:#a9f2dc}.pill.won{background:#24462f;color:#b6f4c7}.pill.lost{background:#472b37;color:#ffc3d1}.leadmeta{color:var(--muted);font-size:12px;margin:5px 0 9px;overflow-wrap:anywhere}.leadnote{font-size:13px;white-space:pre-wrap;margin:8px 0}.message{background:#111c31;border:1px solid #344361;border-radius:10px;padding:12px;white-space:pre-wrap;font-size:13px;margin:10px 0}.empty{text-align:center;padding:32px 12px;color:var(--muted);border:1px dashed #344361;border-radius:13px}.status{font-size:12px;color:var(--muted);min-height:18px;margin-top:9px}.divider{border:0;border-top:1px solid var(--line);margin:18px 0}.footer{border-top:1px solid var(--line);padding:20px 0;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:720px){.grid2,.grid3{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:10px}.stat strong{font-size:20px}.wrap{padding:15px}.panel{padding:15px}.hero{padding-top:32px}}
+</style>
+</head>
+<body><div class="wrap">
+<header class="nav"><div class="brand">✦ FlowPilot<span> AI</span></div><div class="tag">LEAD FOLLOW-UP WORKSPACE</div></header>
+<section class="hero"><div class="eyebrow">Turn enquiries into opportunities</div><h1>Stop losing customers because you <em>forgot to follow up.</em></h1><p>Keep every potential customer in one place, prepare personalized follow-up messages, and know who needs attention next. Simple enough to use from your phone.</p></section>
+<div class="notice"><b>First-version demo:</b> Leads are stored in this browser on this device. AI message drafting requires an OpenAI API key on your deployed server. Automatic sending and timed reminders are not enabled yet.</div>
+<section class="stats">
+<div class="stat"><strong id="totalCount">0</strong><span>Total leads</span></div>
+<div class="stat"><strong id="followCount">0</strong><span>Need follow-up</span></div>
+<div class="stat"><strong id="wonCount">0</strong><span>Marked as customers</span></div>
+</section>
+<nav class="tabs">
+<button class="tab active" data-tab="leads">Lead tracker</button><button class="tab" data-tab="message">Follow-up message maker</button><button class="tab" data-tab="how">How to use</button>
+</nav>
+<section id="leads" class="tabpage">
+<div class="grid2">
+<div class="panel"><h2>＋ Add a potential customer</h2><p class="sub">Save people who asked about your product or service.</p>
+<form id="leadForm">
+<div class="field"><label for="name">Customer name *</label><input id="name" required maxlength="100" placeholder="e.g. Ada"></div>
+<div class="field"><label for="contact">Phone or contact (optional)</label><input id="contact" maxlength="150" placeholder="e.g. WhatsApp number or email"></div>
+<div class="field"><label for="interest">What are they interested in? *</label><input id="interest" required maxlength="250" placeholder="e.g. Website design package"></div>
+<div class="grid2"><div class="field"><label for="source">Where did they come from?</label><select id="source"><option>WhatsApp</option><option>Facebook</option><option>Instagram</option><option>TikTok</option><option>Website</option><option>Referral</option><option>Other</option></select></div><div class="field"><label for="nextDate">Follow-up date</label><input id="nextDate" type="date"></div></div>
+<div class="field"><label for="notes">Notes (optional)</label><textarea id="notes" maxlength="1500" placeholder="What did they ask? What did you promise?"></textarea></div>
+<button class="full" type="submit">Save potential customer</button><div id="formStatus" class="status" role="status"></div>
+</form></div>
+<div class="panel"><h2>Your customer pipeline</h2><p class="sub">Filter your saved leads and see who needs attention.</p>
+<div class="grid2"><div class="field"><label for="filterStatus">Status</label><select id="filterStatus"><option value="all">All leads</option><option value="New">New</option><option value="Follow-up needed">Follow-up needed</option><option value="Waiting for reply">Waiting for reply</option><option value="Won">Became a customer</option><option value="Lost">Not interested</option></select></div><div class="field"><label for="search">Search</label><input id="search" placeholder="Name or interest"></div></div>
+<div id="leadList" class="leadlist"></div></div>
+</div></section>
+<section id="message" class="tabpage hidden">
+<div class="grid2">
+<div class="panel"><h2>✦ Create a follow-up message</h2><p class="sub">Make a relevant message without starting from a blank page.</p>
+<div class="field"><label for="msgLead">Choose saved lead (optional)</label><select id="msgLead"><option value="">Write for a new lead</option></select></div>
+<div class="field"><label for="msgGoal">Message goal</label><select id="msgGoal"><option value="gentle">Friendly check-in</option><option value="quote">Follow up on a price or quote</option><option value="objection">Answer a concern and invite questions</option><option value="close">Help them decide without pressure</option><option value="thank">Thank them after purchase</option></select></div>
+<div class="field"><label for="business">Your business / product</label><input id="business" maxlength="180" placeholder="e.g. Prince Michael Mix — music production"></div>
+<div class="field"><label for="extra">Any extra detail (optional)</label><textarea id="extra" maxlength="1500" placeholder="e.g. They said they would decide after payday."></textarea></div>
+<button class="full" id="generate">Generate follow-up message</button><div id="genStatus" class="status" role="status"></div>
+</div>
+<div class="panel"><h2>Ready-to-use draft</h2><p class="sub">Check details before you send. Nothing is sent automatically.</p><div id="draft" class="message">Your follow-up message will appear here.</div><div class="row"><button id="copyDraft" class="secondary">Copy message</button><button id="markFollowed" class="secondary">Mark as followed up</button></div><div id="draftStatus" class="status" role="status"></div></div>
+</div></section>
+<section id="how" class="tabpage hidden">
+<div class="panel"><h2>How FlowPilot AI helps you follow up</h2><p class="sub">A simple daily routine for a small business.</p>
+<div class="leadlist">
+<div class="lead"><b>1. Save every enquiry</b><div class="leadmeta">When someone asks about a product or service, add their name, what they want, and where they contacted you.</div></div>
+<div class="lead"><b>2. Set a follow-up date</b><div class="leadmeta">Choose when you want to contact them again. Check the tracker each morning.</div></div>
+<div class="lead"><b>3. Prepare a personal message</b><div class="leadmeta">Select the lead, choose the goal, generate a draft, and edit it to sound like you.</div></div>
+<div class="lead"><b>4. Contact them in your usual app</b><div class="leadmeta">Copy the message into WhatsApp, email, or another channel. This version does not send messages on your behalf.</div></div>
+<div class="lead"><b>5. Update the result</b><div class="leadmeta">Mark whether they need another follow-up, became a customer, or are no longer interested.</div></div>
+</div>
+<hr class="divider"><p class="muted">Next production steps: account sign-in, shared cloud storage, real scheduled reminders, and approved messaging integrations. These are required before this can be a multi-user paid service.</p>
+</div></section>
+<footer class="footer"><span>© 2026 FlowPilot AI</span><span>Respect customer consent. Avoid spam and unwanted follow-ups.</span></footer>
+</div>
+<script>
+const STORAGE_KEY='flowpilot_leads_v1';
+let leads=[];
+try{leads=JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');if(!Array.isArray(leads))leads=[];}catch(e){leads=[];}
+let activeDraftLeadId='';
+const $=id=>document.getElementById(id);
+const save=()=>{try{localStorage.setItem(STORAGE_KEY,JSON.stringify(leads));}catch(e){};render();};
+const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function statusClass(s){return s==='Won'?'won':s==='Lost'?'lost':s==='New'?'new':''}
+function render(){
+ $('totalCount').textContent=leads.length;
+ $('followCount').textContent=leads.filter(l=>!['Won','Lost'].includes(l.status)&&(l.status==='Follow-up needed'||!l.nextDate||l.nextDate<=new Date().toISOString().slice(0,10))).length;
+ $('wonCount').textContent=leads.filter(l=>l.status==='Won').length;
+ const f=$('filterStatus').value,q=$('search').value.toLowerCase().trim();
+ const filtered=leads.filter(l=>(f==='all'||l.status===f)&&(!q||(l.name+' '+l.interest+' '+l.contact).toLowerCase().includes(q)));
+ $('leadList').innerHTML=filtered.length?filtered.map(l=>`<article class="lead"><div class="leadtop"><div><div class="leadname">${escapeHtml(l.name)}</div><div class="leadmeta">${escapeHtml(l.interest)} · ${escapeHtml(l.source)}${l.contact?' · '+escapeHtml(l.contact):''}</div></div><span class="pill ${statusClass(l.status)}">${escapeHtml(l.status)}</span></div>${l.nextDate?`<div class="leadmeta">Follow-up date: ${escapeHtml(l.nextDate)}</div>`:''}${l.notes?`<div class="leadnote">${escapeHtml(l.notes)}</div>`:''}<div class="row"><button class="secondary small" data-action="draft" data-id="${l.id}">Draft message</button><select aria-label="Update status" data-action="status" data-id="${l.id}" class="small" style="width:auto;max-width:180px">${['New','Follow-up needed','Waiting for reply','Won','Lost'].map(s=>`<option ${l.status===s?'selected':''}>${s}</option>`).join('')}</select><button class="danger small" data-action="delete" data-id="${l.id}">Delete</button></div></article>`).join(''):'<div class="empty">No matching leads yet. Add your first potential customer above.</div>';
+ const current=$('msgLead').value;
+ $('msgLead').innerHTML='<option value="">Write for a new lead</option>'+leads.map(l=>`<option value="${l.id}">${escapeHtml(l.name)} — ${escapeHtml(l.interest)}</option>`).join('');
+ if(leads.some(l=>l.id===current))$('msgLead').value=current;
+}
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tabpage').forEach(x=>x.classList.toggle('hidden',x.id!==b.dataset.tab));}));
+$('leadForm').addEventListener('submit',e=>{e.preventDefault();const l={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),name:$('name').value.trim(),contact:$('contact').value.trim(),interest:$('interest').value.trim(),source:$('source').value,nextDate:$('nextDate').value,notes:$('notes').value.trim(),status:'New',createdAt:new Date().toISOString()};if(!l.name||!l.interest)return;leads.unshift(l);save();e.target.reset();$('formStatus').textContent='Lead saved on this device.';});
+$('filterStatus').addEventListener('change',render);$('search').addEventListener('input',render);
+$('leadList').addEventListener('change',e=>{const el=e.target;if(el.dataset.action==='status'){const l=leads.find(x=>x.id===el.dataset.id);if(l){l.status=el.value;save();}}});
+$('leadList').addEventListener('click',e=>{const b=e.target.closest('button[data-action]');if(!b)return;const l=leads.find(x=>x.id===b.dataset.id);if(!l)return;if(b.dataset.action==='delete'){if(confirm('Delete this lead from this browser?')){leads=leads.filter(x=>x.id!==l.id);save();}}else if(b.dataset.action==='draft'){ $('msgLead').value=l.id;document.querySelector('[data-tab="message"]').click();}});
+function selectedLead(){return leads.find(l=>l.id===$('msgLead').value)||null}
+function localDraft(l,goal,biz,extra){const name=l?.name||'there',interest=l?.interest||'your enquiry';const detail=extra.trim()||(l?.notes||'');let start=`Hi ${name},`;let body='';
+if(goal==='quote')body=`I’m following up on your enquiry about ${interest}. If you’d like me to clarify the price or what’s included, I’m happy to help.`;
+else if(goal==='objection')body=`I wanted to check whether you have any questions about ${interest}. Let me know what concerns you, and I’ll do my best to help.`;
+else if(goal==='close')body=`Just checking in about ${interest}. If it’s still useful for you, I can help you work out the next step. No pressure either way.`;
+else if(goal==='thank')body=`Thank you for choosing ${biz||'my business'} for ${interest}. I appreciate your support. Please message me if you need anything else.`;
+else body=`I hope you’re doing well. I’m checking in about your enquiry for ${interest}. Are you still interested, or is there anything I can help clarify?`;
+return `${start}\n\n${body}${detail?'\n\nFor context: '+detail:''}\n\n${biz?`Best regards,\n${biz}`:'Best regards'}`;}
+$('generate').addEventListener('click',async()=>{const l=selectedLead(),goal=$('msgGoal').value,biz=$('business').value.trim(),extra=$('extra').value.trim();const input={task:'followup',lead:l?{name:l.name,interest:l.interest,notes:l.notes,source:l.source}:null,goal,business:biz,extra};$('generate').disabled=true;$('genStatus').textContent='Preparing your draft…';try{const r=await fetch('/.netlify/functions/followup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(input)});const d=await r.json();if(!r.ok)throw new Error(d.error||'AI service unavailable');$('draft').textContent=d.result;}catch(err){$('draft').textContent=localDraft(l,goal,biz,extra);$('genStatus').textContent='Using the built-in draft template. Connect the AI key after deployment for personalized AI drafts.';}finally{$('generate').disabled=false;if(!$('genStatus').textContent)$('genStatus').textContent='Draft ready. Review before sending.';activeDraftLeadId=l?.id||'';}});
+$('copyDraft').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('draft').textContent);$('draftStatus').textContent='Copied. Paste it into your messaging app.';}catch(e){$('draftStatus').textContent='Select the message and copy it manually.';}});
+$('markFollowed').addEventListener('click',()=>{const l=leads.find(x=>x.id===activeDraftLeadId);if(!l){$('draftStatus').textContent='Choose a saved lead first to update its status.';return;}l.status='Waiting for reply';l.lastFollowUpAt=new Date().toISOString();save();$('draftStatus').textContent='Lead marked as Waiting for reply.';});
+render();
+</script></body></html>
